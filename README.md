@@ -17,3 +17,29 @@ READ mode: Befor reading the value from the cell, we need to set BL and BLB with
            The bit line that connected to a LOW value net will have a charge leakage through 
            the NMOS transistor of the feeding NOT gate, whie the HIGH value net will remain                fully charged. The two bit lines will be connected to a high sensitive comperator 
            that can detect the charge leakage and we will determine BL and BLB will be                     connected to (+) , (-) respectively so the value we read will be Q
+_______________________________________________________________________________________________
+
+**64 (8X8) 6T-SRAM array**
+
+The 6T-SRAM units are ordered in an 8X8 2-D array in a way that each row gets its WL Line Which controlls all of the cell's switches of the line (8 cells - 16 switches). Each coulmn get a BL and BLB lines.
+
+If we want to HOLD the array values, all need to do is to reset (Low) all the lines (WL,BL,BLB) - **THIS IS THE DEFAULT OF THE ARRAY**.
+
+If we want to WRITE to a specific cell, we will chose the coulm of our wanted cell, set his BL,BLB to a HIGH value. After that we will set (HIGH) only the WL line of the cell's line. That way we are implementing the WRITE operation on our specific cell.
+
+If we want to READ a specific cell, we will choose the coulmn of our wanted cell, set it's BL,BLB to HIGH. After that we will set only the WL of the cell's line to HIGH. Each coulmn has it's oen compertor.  That way we are implementing the READ operation on our specific cell.
+
+EXAMPLE (GOTO: 8X8 SRAM Array- Test Bench.png) : In this example we can see that we are set to WRITE or READ from cell (4,6). The 4th WL gets the electrical voltage "WL4". The 6th BL, BLB gets the electrical voltage of BL6, BLB6 respectively. All the rest of the lines are in logic LOW voltage (DGND).
+
+
+
+
+
+
+
+
+
+
+
+
+
